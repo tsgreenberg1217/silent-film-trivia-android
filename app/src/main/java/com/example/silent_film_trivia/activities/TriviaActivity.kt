@@ -1,12 +1,11 @@
 package com.example.silent_film_trivia.activities
 
-import android.content.Context
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import com.example.silent_film_trivia.R
+import com.example.silent_film_trivia.SilentFilmTriviaApplication
 import com.example.silent_film_trivia.Utils.Constants
 import com.example.silent_film_trivia.Utils.FragmentUtils
 import com.example.silent_film_trivia.fragments.QuestionFragment
@@ -20,7 +19,7 @@ class TriviaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trivia)
         val sessionViewmodel: SessionViewModel by viewModels()
-        sessionViewmodel.sessionId = getSharedPreferences("sft-prefs", Context.MODE_PRIVATE).getLong(Constants.CURRENT_SESSION_ID, -1)
+        sessionViewmodel.sessionId = SilentFilmTriviaApplication.prefsManager.getSessionId()
         sessionViewmodel.questions.observe(this, Observer<ArrayList<Question>> { questions ->
             questions.forEach { question ->
                 if (!question.isAnswered) {
