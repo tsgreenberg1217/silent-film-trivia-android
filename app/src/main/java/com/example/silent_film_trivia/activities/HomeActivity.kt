@@ -1,6 +1,9 @@
 package com.example.silent_film_trivia.activities
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -29,11 +32,20 @@ class HomeActivity : AppCompatActivity() {
         val session = Session(System.currentTimeMillis(), questions)
         val sessionId =
             SilentFilmTriviaDatabase.getDbInstance(applicationContext).sessionDao().insert(session)
+        setSessionIdPref(sessionId)
         launch(Dispatchers.Main) {
             triviaIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-            triviaIntent.putExtra(Constants.CURRENT_SESSION_ID, sessionId)
             startActivity(triviaIntent)
+            finish()
         }
+    }
+
+    @SuppressLint("ApplySharedPref")
+    fun setSessionIdPref(sessionId: Long) {
+        getSharedPreferences("sft-prefs",Context.MODE_PRIVATE)
+            .edit()
+            .putLong(Constants.CURRENT_SESSION_ID, sessionId)
+            .commit()
     }
 
 

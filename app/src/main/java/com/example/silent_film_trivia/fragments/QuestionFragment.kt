@@ -22,23 +22,27 @@ class QuestionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_question, container, false)
-
-        choicesBtnArray.add(Btn_choice_a)
-        choicesBtnArray.add(Btn_choice_b)
-        choicesBtnArray.add(Btn_choice_c)
-        choicesBtnArray.add(Btn_choice_d)
-
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        choicesBtnArray.add(Btn_choice_a as MaterialButton)
+        choicesBtnArray.add(Btn_choice_b as MaterialButton)
+        choicesBtnArray.add(Btn_choice_c as MaterialButton)
+        choicesBtnArray.add(Btn_choice_d as MaterialButton)
+
     }
 
     override fun onStart() {
         super.onStart()
         arguments?.getParcelable<Question>(Constants.CURRENT_QUESTION)?.let {
-            Txt_prompt.setText(it.prompt)
+            Txt_prompt.text = it.prompt
             mAnswer = it.answer
-            it.choices.forEach { choice ->
-                choicesBtnArray.forEach { btn ->
-                    btn.setOnClickListener { compareChoice(choice) }
+            it.choices.forEachIndexed { index, choice ->
+                choicesBtnArray.get(index).apply {
+                    append(choice)
+                    setOnClickListener { compareChoice(choice) }
                 }
             }
         }

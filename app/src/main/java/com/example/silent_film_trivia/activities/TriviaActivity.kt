@@ -1,8 +1,10 @@
 package com.example.silent_film_trivia.activities
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import com.example.silent_film_trivia.R
 import com.example.silent_film_trivia.Utils.Constants
@@ -18,6 +20,7 @@ class TriviaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trivia)
         val sessionViewmodel: SessionViewModel by viewModels()
+        sessionViewmodel.sessionId = getSharedPreferences("sft-prefs", Context.MODE_PRIVATE).getLong(Constants.CURRENT_SESSION_ID, -1)
         sessionViewmodel.questions.observe(this, Observer<ArrayList<Question>> { questions ->
             questions.forEach { question ->
                 if (!question.isAnswered) {
@@ -28,6 +31,11 @@ class TriviaActivity : AppCompatActivity() {
             goToEnd()
         })
 
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 
     private fun goToEnd() {
