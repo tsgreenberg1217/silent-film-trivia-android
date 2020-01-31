@@ -5,7 +5,7 @@ import androidx.room.Query
 import com.example.silent_film_trivia.models.Session
 
 @Dao
-interface SessionDao {
+interface SessionDao : BaseDao<Session> {
     @Query("select * from session")
-    suspend fun getQuestions():List<Session>
+    suspend fun getQuestions(): List<Session>
 }

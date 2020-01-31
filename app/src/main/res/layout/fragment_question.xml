@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/title_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/question_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".9" />
+
+    <TextView
+        android:id="@+id/Txt_prompt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/"
+        android:gravity="center"
+        android:text="Prompt"
+        android:textSize="42sp"
+        app:layout_constraintBottom_toTopOf="@+id/title_guideline"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:fontFamily="@font/eb_garamond"
+        android:textSize="20sp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:id="@+id/Btn_choice_a"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="a) Choice A"
+        android:textAlignment="textStart"
+        app:cornerRadius="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/Btn_choice_b"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@+id/title_guideline" />
+
+    <com.google.android.material.button.MaterialButton
+        android:fontFamily="@font/eb_garamond"
+        android:textSize="20sp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:id="@+id/Btn_choice_b"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="B) Choice B"
+        android:textAlignment="textStart"
+        app:cornerRadius="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/Btn_choice_c"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@+id/Btn_choice_a" />
+
+    <com.google.android.material.button.MaterialButton
+        android:fontFamily="@font/eb_garamond"
+        android:textSize="20sp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:id="@+id/Btn_choice_c"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="C) Choice C"
+        android:textAlignment="textStart"
+        app:cornerRadius="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/Btn_choice_d"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@+id/Btn_choice_b" />
+
+    <com.google.android.material.button.MaterialButton
+        android:fontFamily="@font/eb_garamond"
+        android:textSize="20sp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:id="@+id/Btn_choice_d"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="D) Choice D"
+        android:textAlignment="textStart"
+        app:cornerRadius="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/question_bottom"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@+id/Btn_choice_c" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,12 +8,12 @@ import com.google.gson.reflect.TypeToken
 
 class Converters {
     @TypeConverter
-    fun fromQuestionArray(questions: Array<Question>): String {
-        return Gson().toJson(questions, Question::class.java)
+    fun fromQuestionArray(questions: ArrayList<Question>): String {
+        return Gson().toJson(questions)
     }
 
     @TypeConverter
-    fun toQuestionArray(json: String): Array<Question> {
+    fun toQuestionArray(json: String): ArrayList<Question> {
         val typeToken = object : TypeToken<ArrayList<Question>>() {}.type
         return Gson().fromJson(json, typeToken)
     }
