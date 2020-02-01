@@ -1,5 +1,6 @@
 package com.example.silent_film_trivia.activities
 
+import android.app.Fragment
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -7,12 +8,15 @@ import com.example.silent_film_trivia.R
 import com.example.silent_film_trivia.SilentFilmTriviaApplication
 import com.example.silent_film_trivia.Utils.Constants
 import com.example.silent_film_trivia.Utils.FragmentUtils
+import com.example.silent_film_trivia.Utils.LogingUtils
 import com.example.silent_film_trivia.fragments.QuestionFragment
+import com.example.silent_film_trivia.interfaces.SessionFragmentListener
 import com.example.silent_film_trivia.models.Question
+import com.example.silent_film_trivia.models.QuestionResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class TriviaActivity : AppCompatActivity() {
+class TriviaActivity : BaseActivity(), SessionFragmentListener {
 
     val mQuestions: ArrayList<Question> = ArrayList()
 
@@ -55,6 +59,14 @@ class TriviaActivity : AppCompatActivity() {
             putParcelable(Constants.CURRENT_QUESTION, question)
         }
         FragmentUtils.replaceFragment(supportFragmentManager, questionFragment, R.id.session_layout)
+
+    }
+
+    override fun onQuestionAnswred(result: QuestionResult) {
+        LogingUtils.log("question answered: ${result.isCorrect}")
+    }
+
+    override fun onNextQuestion() {
 
     }
 }

@@ -17,7 +17,7 @@ data class Question(
     @Expose val info: String,
     @Expose var isAnswered: Boolean,
     @Expose var isCorrect: Boolean
-): Parcelable
+) : Parcelable
 
 @Entity
 data class Session(
@@ -30,3 +30,9 @@ data class Session(
     @Expose
     var isInProgress: Boolean = true
 }
+
+@Parcelize
+data class QuestionResult(
+    val isCorrect: Boolean,
+    val info: String
+) : Parcelable

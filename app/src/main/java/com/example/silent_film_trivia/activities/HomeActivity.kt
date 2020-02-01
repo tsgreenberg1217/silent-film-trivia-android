@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
     lateinit var triviaIntent: Intent
 
     override fun onCreate(savedInstanceState: Bundle?) {
