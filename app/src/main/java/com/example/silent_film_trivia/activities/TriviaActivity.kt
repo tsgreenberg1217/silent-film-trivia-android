@@ -1,36 +1,44 @@
 package com.example.silent_film_trivia.activities
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.example.silent_film_trivia.R
 import com.example.silent_film_trivia.SilentFilmTriviaApplication
 import com.example.silent_film_trivia.Utils.Constants
 import com.example.silent_film_trivia.Utils.FragmentUtils
 import com.example.silent_film_trivia.fragments.QuestionFragment
 import com.example.silent_film_trivia.models.Question
-import com.example.silent_film_trivia.viewmodels.SessionViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class TriviaActivity : AppCompatActivity() {
 
+    val mQuestions: ArrayList<Question> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trivia)
-        val sessionViewmodel: SessionViewModel by viewModels()
-        sessionViewmodel.sessionId = SilentFilmTriviaApplication.prefsManager.getSessionId()
-        sessionViewmodel.questions.observe(this, Observer<ArrayList<Question>> { questions ->
-            questions.forEach { question ->
-                if (!question.isAnswered) {
-                    askQuestion(question)
-                    return@Observer
-                }
-            }
-            goToEnd()
-        })
-
+        initTrivia(SilentFilmTriviaApplication.prefsManager.getSessionId())
     }
+
+    private fun initTrivia(sessionId: Long) = lifecycleScope.launch(Dispatchers.IO) {
+        SilentFilmTriviaApplication.database.sessionDao().getSession(sessionId).also { session ->
+            launch(Dispatchers.Main) {
+                mQuestions.addAll(session.questions)
+                askNextQuestionOrEndGame()
+            }
+        }
+    }
+
+    fun askNextQuestionOrEndGame() = mQuestions.forEach { question ->
+        if (!question.isAnswered) {
+            askQuestion(question)
+            return
+        }
+        goToEnd()
+    }
+
 
     override fun onBackPressed() {
         super.onBackPressed()
@@ -46,7 +54,7 @@ class TriviaActivity : AppCompatActivity() {
         questionFragment.arguments = Bundle().apply {
             putParcelable(Constants.CURRENT_QUESTION, question)
         }
-        FragmentUtils.addFragment(supportFragmentManager, questionFragment, R.id.session_layout)
+        FragmentUtils.replaceFragment(supportFragmentManager, questionFragment, R.id.session_layout)
 
     }
 }

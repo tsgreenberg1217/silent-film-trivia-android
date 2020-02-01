@@ -40,18 +40,19 @@
         android:fontFamily="@font/eb_garamond"
         android:gravity="center"
         android:text="Prompt"
-        android:textSize="42sp"
+        android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/title_guideline"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
+        app:strokeWidth="1dp"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         app:strokeColor="@color/colorWhite"
         android:textColor="@color/colorWhite"
         android:fontFamily="@font/eb_garamond"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
         android:id="@+id/Btn_choice_a"
@@ -59,7 +60,7 @@
         android:layout_height="wrap_content"
         android:text="A) "
         android:textAlignment="textStart"
-        app:cornerRadius="1dp"
+        app:cornerRadius="0dp"
         app:layout_constraintBottom_toTopOf="@+id/Btn_choice_b"
         app:layout_constraintEnd_toStartOf="@+id/guideline_end"
         app:layout_constraintHorizontal_bias="0.5"
@@ -67,11 +68,12 @@
         app:layout_constraintTop_toBottomOf="@+id/title_guideline" />
 
     <com.google.android.material.button.MaterialButton
+        app:strokeWidth="1dp"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         app:strokeColor="@color/colorWhite"
         android:textColor="@color/colorWhite"
         android:fontFamily="@font/eb_garamond"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
         android:id="@+id/Btn_choice_b"
@@ -79,7 +81,7 @@
         android:layout_height="wrap_content"
         android:text="B) "
         android:textAlignment="textStart"
-        app:cornerRadius="1dp"
+        app:cornerRadius="0dp"
         app:layout_constraintBottom_toTopOf="@+id/Btn_choice_c"
         app:layout_constraintEnd_toStartOf="@+id/guideline_end"
         app:layout_constraintHorizontal_bias="0.5"
@@ -87,11 +89,12 @@
         app:layout_constraintTop_toBottomOf="@+id/Btn_choice_a" />
 
     <com.google.android.material.button.MaterialButton
+        app:strokeWidth="1dp"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         app:strokeColor="@color/colorWhite"
         android:textColor="@color/colorWhite"
         android:fontFamily="@font/eb_garamond"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
         android:id="@+id/Btn_choice_c"
@@ -99,7 +102,7 @@
         android:layout_height="wrap_content"
         android:text="C) "
         android:textAlignment="textStart"
-        app:cornerRadius="1dp"
+        app:cornerRadius="0dp"
         app:layout_constraintBottom_toTopOf="@+id/Btn_choice_d"
         app:layout_constraintEnd_toStartOf="@+id/guideline_end"
         app:layout_constraintHorizontal_bias="0.5"
@@ -107,11 +110,12 @@
         app:layout_constraintTop_toBottomOf="@+id/Btn_choice_b" />
 
     <com.google.android.material.button.MaterialButton
+        app:strokeWidth="1dp"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         app:strokeColor="@color/colorWhite"
         android:textColor="@color/colorWhite"
         android:fontFamily="@font/eb_garamond"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
         android:id="@+id/Btn_choice_d"
@@ -119,7 +123,7 @@
         android:layout_height="wrap_content"
         android:text="D) "
         android:textAlignment="textStart"
-        app:cornerRadius="1dp"
+        app:cornerRadius="0dp"
         app:layout_constraintBottom_toTopOf="@+id/question_bottom"
         app:layout_constraintEnd_toStartOf="@+id/guideline_end"
         app:layout_constraintHorizontal_bias="0.5"

@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentManager
 
 class FragmentUtils {
     companion object {
-        fun addFragment(fm: FragmentManager, fragment: Fragment, container: Int) {
+        fun replaceFragment(fm: FragmentManager, fragment: Fragment, container: Int) {
             fm.beginTransaction()
                 .replace(container, fragment)
                 .addToBackStack(null)

@@ -33,7 +33,7 @@ class QuestionFragment : Fragment() {
             view.Txt_prompt.text = it.prompt
             mAnswer = it.answer
             it.choices.forEachIndexed { index, choice ->
-                choicesBtnArray.get(index).apply {
+                choicesBtnArray[index].apply {
                     append(choice)
                     setOnClickListener { compareChoice(choice) }
                 }
