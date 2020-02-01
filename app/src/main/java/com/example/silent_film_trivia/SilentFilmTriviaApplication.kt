@@ -6,20 +6,24 @@ import androidx.room.Room
 import com.example.silent_film_trivia.Utils.SharedPreferencesManager
 import com.example.silent_film_trivia.db.SilentFilmTriviaDatabase
 
-class SilentFilmTriviaApplication {
+class SilentFilmTriviaApplication : Application() {
+    override fun onCreate() {
+        super.onCreate()
 
-    companion object : Application() {
-        val database: SilentFilmTriviaDatabase by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
-            Room.databaseBuilder(
-                this,
-                SilentFilmTriviaDatabase::class.java,
-                "silent-film-trivia-db"
-            ).build()
-        }
+        database = Room.databaseBuilder(
+            this,
+            SilentFilmTriviaDatabase::class.java,
+            "silent-film-trivia-db"
+        ).build()
 
-        val prefsManager: SharedPreferencesManager by lazy {
-            SharedPreferencesManager.getInstance(this)
-        }
+        prefsManager = SharedPreferencesManager.getInstance(this)
+
+    }
+
+    companion object {
+        lateinit var database: SilentFilmTriviaDatabase
+
+        lateinit var prefsManager: SharedPreferencesManager
     }
 
 }

@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.silent_film_trivia.SilentFilmTriviaApplication
 import com.example.silent_film_trivia.db.SilentFilmTriviaDatabase
 import com.example.silent_film_trivia.models.Question
 import com.example.silent_film_trivia.models.Session
@@ -17,7 +18,7 @@ class SessionViewModel : ViewModel() {
             sessionId?.let { sId ->
                 viewModelScope.launch(Dispatchers.IO) {
                     val session: Session =
-                        SilentFilmTriviaDatabase.INSTANCE!!.sessionDao().getSession(sId)
+                        SilentFilmTriviaApplication.database.sessionDao().getSession(sId)
                     launch(Dispatchers.Main) {
                         questions.value = session.questions
                     }
