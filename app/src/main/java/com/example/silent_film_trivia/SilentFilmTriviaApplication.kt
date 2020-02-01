@@ -22,7 +22,6 @@ class SilentFilmTriviaApplication : Application() {
 
     companion object {
         lateinit var database: SilentFilmTriviaDatabase
-
         lateinit var prefsManager: SharedPreferencesManager
     }
 

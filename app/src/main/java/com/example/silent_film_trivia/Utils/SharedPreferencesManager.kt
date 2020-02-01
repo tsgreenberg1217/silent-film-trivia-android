@@ -8,7 +8,7 @@ import android.content.SharedPreferences
 @SuppressLint("ApplySharedPref")
 class SharedPreferencesManager(context: Context) {
 
-    val prefs: SharedPreferences =
+    private val prefs: SharedPreferences =
         context.getSharedPreferences("sft-prefs", Application.MODE_PRIVATE)
 
     fun setSessionId(sessionId: Long) =
@@ -17,7 +17,7 @@ class SharedPreferencesManager(context: Context) {
     fun getSessionId(): Long = prefs.getLong(Constants.CURRENT_SESSION_ID, -1)
 
     companion object {
-        var instance: SharedPreferencesManager? = null
+        private var instance: SharedPreferencesManager? = null
 
         fun getInstance(context: Context): SharedPreferencesManager {
             if (instance == null) {
