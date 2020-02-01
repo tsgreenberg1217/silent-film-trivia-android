@@ -10,6 +10,7 @@ import com.example.silent_film_trivia.Utils.Constants
 import com.example.silent_film_trivia.models.Question
 import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.fragment_question.*
+import kotlinx.android.synthetic.main.fragment_question.view.*
 
 class QuestionFragment : Fragment() {
 
@@ -22,22 +23,14 @@ class QuestionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_question, container, false)
-        return view
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        choicesBtnArray.add(Btn_choice_a as MaterialButton)
-        choicesBtnArray.add(Btn_choice_b as MaterialButton)
-        choicesBtnArray.add(Btn_choice_c as MaterialButton)
-        choicesBtnArray.add(Btn_choice_d as MaterialButton)
+        choicesBtnArray.add(view.Btn_choice_a)
+        choicesBtnArray.add(view.Btn_choice_b)
+        choicesBtnArray.add(view.Btn_choice_c)
+        choicesBtnArray.add(view.Btn_choice_d)
 
-    }
-
-    override fun onStart() {
-        super.onStart()
         arguments?.getParcelable<Question>(Constants.CURRENT_QUESTION)?.let {
-            Txt_prompt.text = it.prompt
+            view.Txt_prompt.text = it.prompt
             mAnswer = it.answer
             it.choices.forEachIndexed { index, choice ->
                 choicesBtnArray.get(index).apply {
@@ -46,7 +39,11 @@ class QuestionFragment : Fragment() {
                 }
             }
         }
+
+        return view
     }
+
+
 
     fun compareChoice(choice: String) {
         val isCorrect = mAnswer.equals(choice)
