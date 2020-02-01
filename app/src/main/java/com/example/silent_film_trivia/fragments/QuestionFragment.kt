@@ -4,21 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.example.silent_film_trivia.R
 import com.example.silent_film_trivia.Utils.Constants
-import com.example.silent_film_trivia.interfaces.SessionFragmentListener
 import com.example.silent_film_trivia.models.Question
-import com.example.silent_film_trivia.models.QuestionResult
 import com.google.android.material.button.MaterialButton
-import kotlinx.android.synthetic.main.fragment_question.*
 import kotlinx.android.synthetic.main.fragment_question.view.*
 
 class QuestionFragment : BaseFragment() {
 
 
     val choicesBtnArray: ArrayList<MaterialButton> = ArrayList()
-    var mAnswer: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,11 +29,12 @@ class QuestionFragment : BaseFragment() {
 
         arguments?.getParcelable<Question>(Constants.CURRENT_QUESTION)?.let { q ->
             view.Txt_prompt.text = q.prompt
-            mAnswer = q.answer
             q.choices.forEachIndexed { index, choice ->
                 choicesBtnArray[index].apply {
                     append(choice)
-                    setOnClickListener { compareChoice(choice, q.info) }
+                    setOnClickListener {
+                        sendChoiceResult(q, q.answer == choice)
+                    }
                 }
             }
         }
@@ -46,10 +42,10 @@ class QuestionFragment : BaseFragment() {
         return view
     }
 
-    fun compareChoice(choice: String, info: String) {
-        val isCorrect = mAnswer.equals(choice)
-        val result = QuestionResult(isCorrect, info)
-        mListener?.onQuestionAnswred(result)
+    fun sendChoiceResult(q: Question, isCorrect: Boolean) {
+        q.isCorrect = isCorrect
+        q.isAnswered = true
+        mListener?.onQuestionAnswred(q)
     }
 }
 

@@ -1,8 +1,8 @@
 package com.example.silent_film_trivia.interfaces
 
-import com.example.silent_film_trivia.models.QuestionResult
+import com.example.silent_film_trivia.models.Question
 
 interface SessionFragmentListener {
-    fun onQuestionAnswred(result:QuestionResult)
+    fun onQuestionAnswred(question: Question)
     fun onNextQuestion()
 }

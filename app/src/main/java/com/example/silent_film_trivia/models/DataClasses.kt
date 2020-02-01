@@ -30,9 +30,3 @@ data class Session(
     @Expose
     var isInProgress: Boolean = true
 }
-
-@Parcelize
-data class QuestionResult(
-    val isCorrect: Boolean,
-    val info: String
-) : Parcelable
