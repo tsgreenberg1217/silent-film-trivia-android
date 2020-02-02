@@ -2,6 +2,7 @@ package com.example.silent_film_trivia
 
 import android.app.Application
 import android.content.SharedPreferences
+import android.content.res.Resources
 import androidx.room.Room
 import com.example.silent_film_trivia.Utils.SharedPreferencesManager
 import com.example.silent_film_trivia.db.SilentFilmTriviaDatabase
@@ -9,6 +10,8 @@ import com.example.silent_film_trivia.db.SilentFilmTriviaDatabase
 class SilentFilmTriviaApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+
+        appResources = this.resources
 
         database = Room.databaseBuilder(
             this,
@@ -21,6 +24,7 @@ class SilentFilmTriviaApplication : Application() {
     }
 
     companion object {
+        lateinit var appResources: Resources
         lateinit var database: SilentFilmTriviaDatabase
         lateinit var prefsManager: SharedPreferencesManager
     }
