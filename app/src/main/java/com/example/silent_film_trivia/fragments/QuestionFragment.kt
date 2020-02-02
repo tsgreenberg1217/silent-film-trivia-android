@@ -29,6 +29,7 @@ class QuestionFragment : BaseFragment() {
 
         arguments?.getParcelable<Question>(Constants.CURRENT_QUESTION)?.let { q ->
             view.Txt_prompt.text = q.prompt
+            q.choices.shuffle()
             q.choices.forEachIndexed { index, choice ->
                 choicesBtnArray[index].apply {
                     append(choice)

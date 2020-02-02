@@ -21,11 +21,13 @@ import kotlinx.coroutines.launch
 class HomeActivity : BaseActivity() {
     lateinit var triviaIntent: Intent
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         triviaIntent = Intent(this, TriviaActivity::class.java)
         Btn_start.setOnClickListener { createAndStartTriviaSession() }
+        goToGameIfInProgress()
     }
 
     fun createAndStartTriviaSession() = lifecycleScope.launch(Dispatchers.IO) {

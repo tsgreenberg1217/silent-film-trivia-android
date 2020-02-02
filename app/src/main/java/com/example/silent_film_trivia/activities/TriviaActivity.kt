@@ -35,14 +35,16 @@ class TriviaActivity : BaseActivity(), SessionFragmentListener {
         }
     }
 
-    fun askNextQuestionOrEndGame() = mQuestions.forEach { question ->
-        if (!question.isAnswered) {
-            askQuestion(question)
-            return
+    fun askNextQuestionOrEndGame(){
+        for(question:Question in mQuestions){
+            if (!question.isAnswered) {
+                askQuestion(question)
+                return
+
+            }
         }
         goToEnd()
     }
-
 
     override fun onBackPressed() {
         super.onBackPressed()
@@ -50,6 +52,7 @@ class TriviaActivity : BaseActivity(), SessionFragmentListener {
     }
 
     private fun goToEnd() {
+        SilentFilmTriviaApplication.prefsManager.setSessionId(-1)
         finish()
     }
 

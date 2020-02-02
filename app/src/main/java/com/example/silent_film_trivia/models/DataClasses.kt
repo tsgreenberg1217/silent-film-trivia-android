@@ -12,11 +12,11 @@ import kotlinx.android.parcel.Parcelize
 data class Question(
     @Expose @PrimaryKey @SerializedName("_id") val id: String,
     @Expose val prompt: String,
-    @Expose val choices: ArrayList<String>,
+    @Expose val choices: MutableList<String>,
     @Expose val answer: String,
     @Expose val info: String,
-    @Expose var isAnswered: Boolean,
-    @Expose var isCorrect: Boolean
+    var isAnswered: Boolean,
+    var isCorrect: Boolean
 ) : Parcelable
 
 @Entity
