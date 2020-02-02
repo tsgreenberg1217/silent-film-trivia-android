@@ -11,6 +11,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Question(
     @Expose @PrimaryKey @SerializedName("_id") val id: String,
+    @Expose @SerializedName("giphy_id") val giphyId: String,
     @Expose val prompt: String,
     @Expose val choices: MutableList<String>,
     @Expose val answer: String,

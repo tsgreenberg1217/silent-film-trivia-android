@@ -22,6 +22,7 @@
         app:layout_constraintGuide_end="16dp" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/cagliostro"
@@ -29,10 +30,9 @@
         android:textColor="@color/colorWhite"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/Btn_start"
-        app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <com.google.android.material.button.MaterialButton
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"

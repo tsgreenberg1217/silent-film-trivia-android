@@ -19,7 +19,8 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField "String", "BASE_URL", String.format('"http://%s:300"', InetAddress.getLocalHost().getCanonicalHostName())
+            buildConfigField "String", "BASE_URL", String.format('"http://%s:300/"', InetAddress.getLocalHost().getCanonicalHostName())
+            buildConfigField "String", "GIPHY_URL", "\"https://api.giphy.com/v1/\""
 
         }
         release {
@@ -66,5 +67,9 @@ dependencies {
     kapt "androidx.room:room-compiler:2.2.3" // For Kotlin use kapt instead of annotationProcessor
     implementation "androidx.room:room-ktx:2.2.3"
 
+    implementation "com.squareup.okhttp3:logging-interceptor:4.3.1"
+
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
 }
