@@ -11,6 +11,7 @@ open class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         LogingUtils.log("onCreate- ${this::class.java.canonicalName}")
+        if (this !is TriviaActivity) goToGameIfInProgress()
     }
 
      fun goToGameIfInProgress() {

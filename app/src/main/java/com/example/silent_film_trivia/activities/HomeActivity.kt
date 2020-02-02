@@ -31,7 +31,6 @@ class HomeActivity : BaseActivity() {
         setContentView(R.layout.activity_home)
         triviaIntent = Intent(this, TriviaActivity::class.java)
         Btn_start.setOnClickListener { createAndStartTriviaSession() }
-        goToGameIfInProgress()
     }
 
     fun createAndStartTriviaSession() = lifecycleScope.launch(Dispatchers.IO) {
