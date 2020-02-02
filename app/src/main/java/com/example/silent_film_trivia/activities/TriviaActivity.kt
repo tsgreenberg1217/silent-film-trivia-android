@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 
 class TriviaActivity : BaseActivity(), SessionFragmentListener {
 
-    private val mQuestions: ArrayList<Question> = ArrayList()
+    private val mQuestions: MutableList<Question> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +29,7 @@ class TriviaActivity : BaseActivity(), SessionFragmentListener {
     private fun initTrivia(sessionId: Long) = lifecycleScope.launch(Dispatchers.IO) {
         SilentFilmTriviaApplication.database.sessionDao().getSession(sessionId).also { session ->
             launch(Dispatchers.Main) {
+                session.questions.shuffle()
                 mQuestions.addAll(session.questions)
                 askNextQuestionOrEndGame()
             }

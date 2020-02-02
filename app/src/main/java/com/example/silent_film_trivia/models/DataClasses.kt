@@ -23,7 +23,7 @@ data class Question(
 @Entity
 data class Session(
     @Expose val startTime: Long,
-    @Expose val questions: ArrayList<Question>
+    @Expose val questions: MutableList<Question>
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0

@@ -14,5 +14,5 @@ interface SessionDao : BaseDao<Session> {
     suspend fun getSession(id: Long): Session
 
     @Query("update session set questions = :questions where id == :id")
-    suspend fun updateQuestions(id: Long, questions: ArrayList<Question>)
+    suspend fun updateQuestions(id: Long, questions: MutableList<Question>)
 }
