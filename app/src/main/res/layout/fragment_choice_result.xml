@@ -2,17 +2,49 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Result_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/mid_guideline"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/Movie_gif_container"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/mid_guideline"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+
 
     <TextView
-        android:id="@+id/Txt_container"
+        android:id="@+id/Txt_Result_Container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/eb_garamond"
         android:gravity="center"
-        android:text="Prompt"
+        android:text="RESULT"
+        android:padding="8dp"
+        android:textSize="28sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+
+    <TextView
+        android:visibility="invisible"
+        android:id="@+id/Txt_info_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/eb_garamond"
+        android:gravity="center"
+        android:text="INFO"
         android:padding="8dp"
         android:textSize="28sp"
         app:layout_constraintTop_toTopOf="parent"
