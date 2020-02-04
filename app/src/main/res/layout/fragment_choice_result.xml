@@ -13,13 +13,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/result_guideline_start"
+        app:layout_constraintGuide_begin="16dp"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/result_guideline_end"
+        app:layout_constraintGuide_end="16dp"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <ImageView
+        app:layout_constraintStart_toStartOf="@id/result_guideline_start"
         android:id="@+id/Movie_gif_container"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/mid_guideline"
+        android:layout_margin="16dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
-
 
     <TextView
         android:id="@+id/Txt_Result_Container"
@@ -48,10 +64,20 @@
         android:padding="8dp"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/mid_guideline"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/Btn_nxtQuestion"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/ButtonBase"
+        android:id="@+id/Btn_nxtQuestion"
+        android:text="Next Question"
+        android:alpha="0.0"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintStart_toStartOf="@id/result_guideline_start"
+        app:layout_constraintEnd_toEndOf="@id/result_guideline_end"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
