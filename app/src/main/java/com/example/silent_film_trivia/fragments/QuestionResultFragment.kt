@@ -2,13 +2,11 @@ package com.example.silent_film_trivia.fragments
 
 import android.os.Bundle
 import android.os.Handler
-import android.transition.AutoTransition
-import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.silent_film_trivia.R
@@ -52,52 +50,21 @@ class QuestionResultFragment : BaseFragment() {
         mTxtResult.text = if (q.isCorrect) "Correct!" else "Incorrect"
         mTxtInfp.text = q.info
         infoRunnable = Runnable {
-            mTxtResult.visibility = View.GONE
-            mTxtInfp.visibility = View.VISIBLE
             loadGif(q.giphyId, view)
-            animateText(q.info)
+            animateText()
         }
         infoHandler.postDelayed(infoRunnable, delayOffset)
 
-        nextQuestionRunnable = Runnable { mListener?.onNextQuestion() }
-        nextQuestionHander.postDelayed(nextQuestionRunnable, delayOffset * 2)
+//        nextQuestionRunnable = Runnable { mListener?.onNextQuestion() }
+//        nextQuestionHander.postDelayed(nextQuestionRunnable, delayOffset * 2)
 
 
     }
 
-    private fun animateText(info: String) {
-        var cSet = ConstraintSet().apply {
-            clone(Result_layout)
-            connect(
-                R.id.Txt_Result_Container,
-                ConstraintSet.TOP,
-                R.id.mid_guideline,
-                ConstraintSet.BOTTOM,
-                0
-            )
-        }
-
-        var cSet2 = ConstraintSet().apply {
-            clone(Result_layout)
-            connect(
-                R.id.Txt_info_container,
-                ConstraintSet.TOP,
-                R.id.mid_guideline,
-                ConstraintSet.BOTTOM,
-                0
-            )
-        }
-
-
-
-
-        TransitionManager.beginDelayedTransition(Result_layout, AutoTransition().apply {
-            duration = 2000
-        })
-
-        cSet.applyTo(Result_layout)
-        cSet2.applyTo(Result_layout)
-
+    private fun animateText() {
+        mTxtInfp.animate().alpha(1.0f).setDuration(2000)
+//        mTxtResult.startAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_out))
+        mTxtResult.animate().alpha(0.0f).setDuration(1000)
     }
 
     private fun loadGif(giphyId: String, view: View) = lifecycleScope.launch(Dispatchers.IO) {

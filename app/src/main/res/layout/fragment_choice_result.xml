@@ -38,16 +38,16 @@
 
 
     <TextView
-        android:visibility="invisible"
         android:id="@+id/Txt_info_container"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:fontFamily="@font/eb_garamond"
         android:gravity="center"
+        android:alpha="0.0"
         android:text="INFO"
         android:padding="8dp"
-        android:textSize="28sp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/mid_guideline"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
