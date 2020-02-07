@@ -11,16 +11,9 @@ open class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         LogingUtils.log("onCreate- ${this::class.java.canonicalName}")
-        if (this !is TriviaActivity) goToGameIfInProgress()
     }
 
-     fun goToGameIfInProgress() {
-        val id = SilentFilmTriviaApplication.prefsManager.getSessionId()
-        if (id > -1) {
-            val intent = Intent(this, TriviaActivity::class.java)
-            startActivity(intent)
-        }
-    }
+
 
     override fun onResume() {
         super.onResume()
