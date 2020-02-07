@@ -4,38 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/Result_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/colorBackground">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/mid_guideline"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".5"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/result_guideline_start"
-        app:layout_constraintGuide_begin="16dp"
-        android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
 
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/result_guideline_end"
-        app:layout_constraintGuide_end="16dp"
-        android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="420dp"
+        android:layout_height="420dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@id/mid_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="flourish_border.json"
+        app:lottie_loop="false" />
 
     <ImageView
-        app:layout_constraintStart_toStartOf="@id/result_guideline_start"
         android:id="@+id/Movie_gif_container"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_margin="30dp"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="@id/result_guideline_end"
         app:layout_constraintBottom_toTopOf="@id/mid_guideline"
-        android:layout_margin="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        app:layout_constraintStart_toStartOf="@id/result_guideline_start"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Txt_Result_Container"
@@ -43,41 +58,41 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/eb_garamond"
         android:gravity="center"
-        android:text="RESULT"
         android:padding="8dp"
+        android:text="RESULT"
+        android:textColor="@color/colorWhite"
         android:textSize="28sp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
         android:id="@+id/Txt_info_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:alpha="0.0"
         android:fontFamily="@font/eb_garamond"
         android:gravity="center"
-        android:alpha="0.0"
-        android:text="INFO"
         android:padding="8dp"
+        android:text="INFO"
+        android:textColor="@color/colorWhite"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/mid_guideline"
         app:layout_constraintBottom_toTopOf="@id/Btn_nxtQuestion"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mid_guideline" />
 
     <com.google.android.material.button.MaterialButton
-        style="@style/ButtonBase"
         android:id="@+id/Btn_nxtQuestion"
-        android:text="Next Question"
-        android:alpha="0.0"
+        style="@style/ButtonBase"
         android:layout_marginBottom="8dp"
-        app:layout_constraintStart_toStartOf="@id/result_guideline_start"
+        android:alpha="0.0"
+        android:text="Next Question"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/result_guideline_end"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="@id/result_guideline_start" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

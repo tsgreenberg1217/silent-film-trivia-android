@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.silent_film_trivia.R
 import com.example.silent_film_trivia.Utils.Constants
 import com.example.silent_film_trivia.api.SilentFilmTriviaApi
@@ -65,7 +66,7 @@ class QuestionResultFragment : BaseFragment() {
     private fun animateText() {
         mTxtResult.animate().alpha(0.0f).setDuration(1000)
         mTxtInfp.animate().alpha(1.0f).setDuration(2000)
-        
+
         mBtnNxt.apply {
             isEnabled = true
             animate().alpha(1.0f).setDuration(2000)
@@ -76,7 +77,7 @@ class QuestionResultFragment : BaseFragment() {
         val response: GiphyResponse = SilentFilmTriviaApi.giphyService.getGiph(giphyId)
         launch(Dispatchers.Main) {
             val url: String = response.data.images.downsized.url
-            Glide.with(view).load(url).centerCrop().into(Movie_gif_container)
+            Glide.with(view).load(url).centerCrop().transition(DrawableTransitionOptions.withCrossFade()).into(Movie_gif_container)
         }
     }
 
