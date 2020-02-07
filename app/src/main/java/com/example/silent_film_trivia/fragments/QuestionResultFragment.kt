@@ -76,10 +76,12 @@ class QuestionResultFragment : BaseFragment() {
     private fun loadGif(giphyId: String, view: View) = lifecycleScope.launch(Dispatchers.IO) {
         val response: GiphyResponse = SilentFilmTriviaApi.giphyService.getGiph(giphyId)
         launch(Dispatchers.Main) {
+            Movie_frame.playAnimation()
             val url: String = response.data.images.downsized.url
-            Glide.with(view).load(url).centerCrop().transition(DrawableTransitionOptions.withCrossFade()).into(Movie_gif_container)
+            Glide.with(view).load(url).centerCrop().transition(DrawableTransitionOptions.withCrossFade(2000)).into(Movie_gif_container)
         }
     }
+
 
     override fun onDestroy() {
         infoHandler.removeCallbacks(infoRunnable)

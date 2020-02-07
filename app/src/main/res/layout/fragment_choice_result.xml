@@ -30,25 +30,24 @@
         app:layout_constraintGuide_end="16dp" />
 
     <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="420dp"
-        android:layout_height="420dp"
-        android:scaleType="fitXY"
+        android:id="@+id/Movie_frame"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@id/mid_guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/result_guideline_end"
+        app:layout_constraintStart_toStartOf="@id/result_guideline_start"
         app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_fileName="flourish_border.json"
+        app:lottie_fileName="movie_frame.json"
         app:lottie_loop="false" />
 
     <ImageView
         android:id="@+id/Movie_gif_container"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_margin="30dp"
-        android:padding="8dp"
-        app:layout_constraintEnd_toEndOf="@id/result_guideline_end"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="28dp"
         app:layout_constraintBottom_toTopOf="@id/mid_guideline"
+        app:layout_constraintEnd_toEndOf="@id/result_guideline_end"
         app:layout_constraintStart_toStartOf="@id/result_guideline_start"
         app:layout_constraintTop_toTopOf="parent" />
 
