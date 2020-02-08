@@ -1,5 +1,6 @@
 package com.example.silent_film_trivia.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
 import androidx.fragment.app.Fragment
@@ -13,8 +14,8 @@ import com.example.silent_film_trivia.fragments.QuestionResultFragment
 import com.example.silent_film_trivia.fragments.QuestionFragment
 import com.example.silent_film_trivia.interfaces.SessionFragmentListener
 import com.example.silent_film_trivia.models.Question
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.example.silent_film_trivia.models.SessionResult
+import kotlinx.coroutines.*
 
 class TriviaActivity : BaseActivity(), SessionFragmentListener {
 
@@ -36,8 +37,8 @@ class TriviaActivity : BaseActivity(), SessionFragmentListener {
         }
     }
 
-    fun askNextQuestionOrEndGame(){
-        for(question:Question in mQuestions){
+    fun askNextQuestionOrEndGame() {
+        for (question: Question in mQuestions) {
             if (!question.isAnswered) {
                 askQuestion(question)
                 return
@@ -53,7 +54,18 @@ class TriviaActivity : BaseActivity(), SessionFragmentListener {
     }
 
     private fun goToEnd() {
+        val id = SilentFilmTriviaApplication.prefsManager.getSessionId()
         SilentFilmTriviaApplication.prefsManager.setSessionId(-1)
+        val result = SessionResult(mQuestions)
+
+        GlobalScope.async {
+            SilentFilmTriviaApplication.database.sessionResultDao()
+                .insertResultAndDeleteSession(id, result)
+        }
+        val homeIntent = Intent(this, HomeActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        startActivity(homeIntent)
         finish()
     }
 

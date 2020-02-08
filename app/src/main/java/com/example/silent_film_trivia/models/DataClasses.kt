@@ -30,4 +30,23 @@ data class Session(
 
     @Expose
     var isInProgress: Boolean = true
+
 }
+
+@Entity
+data class SessionResult(val questions: MutableList<Question>) {
+    @PrimaryKey(autoGenerate = true)
+    var id: Long = 0
+
+    @Expose
+    var correctAnswers: Int = 0
+    @Expose
+    var questionsAsked: Int = 0
+
+    init {
+        questionsAsked = questions.size
+        correctAnswers = questions.filter { q -> q.isCorrect }.size
+
+    }
+}
+

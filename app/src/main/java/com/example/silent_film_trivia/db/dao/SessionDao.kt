@@ -15,4 +15,7 @@ interface SessionDao : BaseDao<Session> {
 
     @Query("update session set questions = :questions where id == :id")
     suspend fun updateQuestions(id: Long, questions: MutableList<Question>)
+
+    @Query("delete from session where id == :id")
+    suspend fun deleteSession(id: Long)
 }
