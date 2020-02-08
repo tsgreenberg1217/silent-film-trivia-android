@@ -37,7 +37,7 @@ class TriviaActivity : BaseActivity(), SessionFragmentListener {
         }
     }
 
-    fun askNextQuestionOrEndGame() {
+    private fun askNextQuestionOrEndGame() {
         for (question: Question in mQuestions) {
             if (!question.isAnswered) {
                 askQuestion(question)
@@ -48,10 +48,6 @@ class TriviaActivity : BaseActivity(), SessionFragmentListener {
         goToEnd()
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
-    }
 
     private fun goToEnd() {
         val id = SilentFilmTriviaApplication.prefsManager.getSessionId()
@@ -74,7 +70,7 @@ class TriviaActivity : BaseActivity(), SessionFragmentListener {
     }
 
     override fun onQuestionAnswred(question: Question) {
-        replaceSessionFragment(QuestionResultFragment(), Constants.CURRENT_QUESTION, question)
+        replaceSessionFragment(QuestionResultFragment(), Constants.CURRENT_QUESTION, question, false)
         lifecycleScope.launch(Dispatchers.IO) {
             SilentFilmTriviaApplication.database.sessionDao().updateQuestions(
                 SilentFilmTriviaApplication.prefsManager.getSessionId(),
@@ -83,14 +79,15 @@ class TriviaActivity : BaseActivity(), SessionFragmentListener {
         }
     }
 
-    private fun replaceSessionFragment(fragment: Fragment, key: String, parcel: Parcelable) {
+    private fun replaceSessionFragment(fragment: Fragment, key: String, parcel: Parcelable, animate:Boolean = true) {
         fragment.arguments = Bundle().apply {
             putParcelable(key, parcel)
         }
         FragmentUtils.replaceFragment(
             supportFragmentManager,
             fragment,
-            R.id.session_layout
+            R.id.session_layout,
+            animate
         )
     }
 

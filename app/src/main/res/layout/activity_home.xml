@@ -29,12 +29,13 @@
         app:layout_constraintGuide_end="60dp" />
 
     <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/Title_Lottie"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitCenter"
         android:layout_marginTop="100dp"
         app:lottie_autoPlay="true"
-        app:lottie_loop="true"
+        app:lottie_loop="false"
         app:lottie_fileName="title.json"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"

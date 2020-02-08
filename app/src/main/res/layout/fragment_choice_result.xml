@@ -38,8 +38,7 @@
         app:layout_constraintBottom_toTopOf="@id/mid_guideline"
         app:layout_constraintEnd_toEndOf="@id/result_guideline_end"
         app:layout_constraintStart_toStartOf="@id/result_guideline_start"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_loop="false" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
         android:id="@+id/Movie_gif_container"
