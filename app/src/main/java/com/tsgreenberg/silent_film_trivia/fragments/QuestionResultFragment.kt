@@ -25,7 +25,7 @@ class QuestionResultFragment : BaseFragment() {
     val infoHandler: Handler = Handler()
     var infoRunnable: Runnable? = null
 
-    val delayOffset: Long = 4000
+    val delayOffset: Long = 2500
 
 
     private lateinit var mTxtResult: TextView
@@ -53,7 +53,7 @@ class QuestionResultFragment : BaseFragment() {
     }
 
     private fun initViewHandlers(q: Question, view: View) {
-        mTxtResult.text = if (q.isCorrect) "Correct!" else "Incorrect"
+        mTxtResult.text = if (q.isCorrect) "'Correct!'" else "'Incorrect'"
         mTxtInfp.text = q.info
         infoRunnable = Runnable {
             loadGif(q.giphyId, view)

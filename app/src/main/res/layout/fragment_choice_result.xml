@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="15dp"
     android:id="@+id/Result_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,6 +12,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent=".5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/mid_guideline_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/mid_guideline_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".55" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/result_guideline_start"
@@ -33,32 +46,29 @@
         android:id="@+id/Movie_frame"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:scaleType="centerCrop"
-        app:lottie_fileName="movie_frame.json"
-        app:layout_constraintBottom_toTopOf="@id/mid_guideline"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@id/mid_guideline_2"
         app:layout_constraintEnd_toEndOf="@id/result_guideline_end"
         app:layout_constraintStart_toStartOf="@id/result_guideline_start"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="@id/mid_guideline_1"
+        app:lottie_fileName="movie_frame.json" />
 
     <ImageView
         android:id="@+id/Movie_gif_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="28dp"
-        app:layout_constraintBottom_toTopOf="@id/mid_guideline"
+        app:layout_constraintBottom_toTopOf="@id/mid_guideline_2"
         app:layout_constraintEnd_toEndOf="@id/result_guideline_end"
         app:layout_constraintStart_toStartOf="@id/result_guideline_start"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/mid_guideline_1" />
 
     <TextView
         android:id="@+id/Txt_Result_Container"
-        android:layout_width="0dp"
+        style="@style/TextDefault"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/eb_garamond"
         android:gravity="center"
-        android:padding="8dp"
         android:text="RESULT"
-        android:textColor="@color/colorWhite"
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,19 +78,17 @@
 
     <TextView
         android:id="@+id/Txt_info_container"
-        android:layout_width="0dp"
+        style="@style/TextDefault"
         android:layout_height="0dp"
         android:alpha="0.0"
-        android:fontFamily="@font/eb_garamond"
         android:gravity="center"
         android:padding="8dp"
         android:text="INFO"
-        android:textColor="@color/colorWhite"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@id/Btn_nxtQuestion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mid_guideline" />
+        app:layout_constraintTop_toBottomOf="@id/mid_guideline_2" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/Btn_nxtQuestion"

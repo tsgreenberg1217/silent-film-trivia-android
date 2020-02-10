@@ -33,12 +33,9 @@
         app:layout_constraintGuide_percent=".9" />
 
     <TextView
-        android:textColor="@color/colorWhite"
-
+        style="@style/TextDefault"
         android:id="@+id/Txt_prompt"
-        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/eb_garamond"
         android:gravity="center"
         android:text="Prompt"
         android:textSize="28sp"
