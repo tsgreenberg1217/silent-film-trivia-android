@@ -2,6 +2,7 @@
 <resources>
     <color name="colorBackground">#0E0E0E</color>
     <color name="colorWhite">#D2D2D2</color>
+    <color name="colorSemiTransGray">#338A8A8A</color>
 <!--    <color name="colorPrimary">#008577</color>-->
 <!--    <color name="colorPrimaryDark">#00574B</color>-->
 <!--    <color name="colorAccent">#D81B60</color>-->

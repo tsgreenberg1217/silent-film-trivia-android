@@ -10,7 +10,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "com.example.silent_film_trivia"
+        applicationId "com.tsgreenberg.silent_film_trivia"
         minSdkVersion 24 // used to be 19, changed for clear text
         targetSdkVersion 29
         versionCode 1
