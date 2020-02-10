@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import com.airbnb.lottie.LottieAnimationView
 import com.tsgreenberg.silent_film_trivia.R
 import com.tsgreenberg.silent_film_trivia.SilentFilmTriviaApplication
+import com.tsgreenberg.silent_film_trivia.Utils.LocalQuestions
 import com.tsgreenberg.silent_film_trivia.api.SilentFilmTriviaApi
 import com.tsgreenberg.silent_film_trivia.models.Question
 import com.tsgreenberg.silent_film_trivia.models.Session
@@ -34,7 +35,8 @@ class HomeActivity : BaseActivity() {
 
 
     fun createAndStartTriviaSession() = lifecycleScope.launch(Dispatchers.IO) {
-        val questions: ArrayList<Question> = SilentFilmTriviaApi.service.getQuestions()
+//        val questions: ArrayList<Question> = SilentFilmTriviaApi.service.getQuestions()
+        val questions = LocalQuestions.create()
         val session = Session(System.currentTimeMillis(), questions)
         val sessionId = SilentFilmTriviaApplication.database.sessionDao().insert(session)
         SilentFilmTriviaApplication.prefsManager.setSessionId(sessionId)
